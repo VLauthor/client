@@ -1,0 +1,18 @@
+name: subscriptions
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8080/api/v1}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "${WEB_PORT:-4026}:4026"
+    environment:
+      PORT: "4026"
+      HOSTNAME: "0.0.0.0"
+      API_MODE: docker
+      INTERNAL_API_URL: ${INTERNAL_API_URL:-http://host.docker.internal:8080/api/v1}

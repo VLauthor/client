@@ -1,0 +1,25 @@
+{
+  "name": "client",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "NODE_OPTIONS=--max-old-space-size=1024 turbo run dev --filter=web --output-logs=errors-only",
+    "dev:next": "next dev --port 4026",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "check-types": "turbo run check-types"
+  },
+  "devDependencies": {
+    "prettier": "^3.7.4",
+    "turbo": "^2.9.6",
+    "typescript": "5.9.2"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "npm@10.9.2",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}

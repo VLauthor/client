@@ -1,0 +1,15 @@
+node_modules
+**/node_modules
+.next
+**/.next
+.turbo
+**/.turbo
+dist
+**/dist
+.git
+.gitignore
+**/.DS_Store
+.cursor
+npm-debug.log*
+*.md
+apps/docs/.next
