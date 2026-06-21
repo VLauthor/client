@@ -14,10 +14,26 @@ const labels: Record<Status, string> = {
   cancelled: "Отменена",
 };
 
-export function StatusBadge({ status }: { status: Status }) {
+export function StatusBadge({ status, date }: { status: Status, date: Date | string }) {
+  if (typeof date == 'string') {
+    date = new Date(date)
+  }
+  if (new Date() > date)
+    return (
+      <span className={cn("rounded-full px-2 py-1 text-xs font-medium", map['inactive'])}>
+        {labels['inactive']}
+      </span>
+    );
+  date.setDate(date.getDate() - 14)
+  if (new Date() > date)
+    return (
+      <span className={cn("rounded-full px-2 py-1 text-xs font-medium", map['expiring'])}>
+        {labels['expiring']}
+      </span>
+    );
   return (
-    <span className={cn("rounded-full px-2 py-1 text-xs font-medium", map[status])}>
-      {labels[status]}
+    <span className={cn("rounded-full px-2 py-1 text-xs font-medium", map['active'])}>
+      {labels['active']}
     </span>
   );
 }

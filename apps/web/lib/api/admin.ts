@@ -312,9 +312,9 @@ export async function adminDeleteSubscription(id: string): Promise<void> {
   await api.delete(`/subscriptions/${id}`);
 }
 
-export async function adminAssignSubscriptionToUser(subscriptionId: string, userId: string): Promise<void> {
+export async function adminAssignSubscriptionToUser(subscriptionId: string, userId: string, durationDays?: number): Promise<void> {
   if (isTestDataMode()) return;
-  await api.post(`/subscriptions/${subscriptionId}/assignments`, { userId, seatCount: 1 });
+  await api.post(`/subscriptions/${subscriptionId}/assignments`, { userId, seatCount: 1, durationDays });
 }
 
 export async function adminRevokeSubscriptionAssignment(subscriptionId: string, assignmentId: string): Promise<void> {

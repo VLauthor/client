@@ -136,7 +136,7 @@ export default function SubscriptionsPage() {
                 </td>
                 <td className="p-3">{item.category}</td>
                 <td className="p-3">
-                  <StatusBadge status={item.status} />
+                  <StatusBadge status={item.status} date={item.nextPayment} />
                 </td>
                 <td className="p-3">{item.department}</td>
                 <td className="p-3">{item.cost > 0 ? formatRub(toRub(item.cost, item.currency)) : "—"}</td>

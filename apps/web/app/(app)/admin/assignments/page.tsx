@@ -140,7 +140,7 @@ export default function AdminAssignmentsPage() {
       toast.error("Выберите подписку и получателей");
       return;
     }
-    await Promise.allSettled(recipients.map((uid) => adminAssignSubscriptionToUser(selectedSubId, uid)));
+    await Promise.allSettled(recipients.map((uid) => adminAssignSubscriptionToUser(selectedSubId, uid, durationDays)));
     toast.success("Оформление выполнено, назначения созданы");
     setSelectedUserIds({});
     setSelectedDepts({});
